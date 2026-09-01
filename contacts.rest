@@ -3,3 +3,11 @@ GET http://localhost:8080/contacts
 ###
 
 GET http://localhost:8080/contacts/6a962ede923a40f5a620493b
+
+### Live on Render - all contacts
+GET https://cse341-contacts-nusk.onrender.com/contacts
+
+###
+
+### Live on Render - one contact
+GET https://cse341-contacts-nusk.onrender.com/contacts/6a962ede923a40f5a620493b
