@@ -1,13 +1,50 @@
+### Get all contacts (local)
 GET http://localhost:8080/contacts
 
 ###
 
-GET http://localhost:8080/contacts/6a962ede923a40f5a620493b
-
-### Live on Render - all contacts
+### Get all contacts (Render)
 GET https://cse341-contacts-nusk.onrender.com/contacts
 
 ###
 
-### Live on Render - one contact
+### Get one contact by id (local) - replace the id with a real one from your database
+GET http://localhost:8080/contacts/6a962ede923a40f5a620493b
+
+###
+
+### Get one contact by id (Render) - replace the id with a real one from your database
 GET https://cse341-contacts-nusk.onrender.com/contacts/6a962ede923a40f5a620493b
+
+###
+
+### Create a new contact
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+    "firstName": "Carlos",
+    "lastName": "Reyes",
+    "email": "carlos.reyes@example.com",
+    "favoriteColor": "Red",
+    "birthday": "1990-07-22"
+}
+
+###
+
+### Update a contact - replace the id with a real one from your database
+PUT http://localhost:8080/contacts/6a962ede923a40f5a620493b
+Content-Type: application/json
+
+{
+    "firstName": "UpdatedFirstName",
+    "lastName": "UpdatedLastName",
+    "email": "updated@example.com",
+    "favoriteColor": "Purple",
+    "birthday": "2000-01-01"
+}
+
+###
+
+### Delete a contact - replace the id with a real one from your database
+DELETE http://localhost:8080/contacts/6a962ede923a40f5a620493b
