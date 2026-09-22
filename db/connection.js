@@ -1,24 +1,17 @@
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
-
-let db;
 
 async function connectToDatabase() {
-    if (db) return db;
-    await client.connect();
-    db = client.db('cse341');
-    console.log('Connected to MongoDB');
-    return db;
-}
-
-function getDb() {
-    if (!db) {
-        throw new Error('Database not initialized — call connectToDatabase() first.');
+    if (mongoose.connection.readyState === 1) {
+        return mongoose.connection;
     }
-    return db;
+    await mongoose.connect(uri, {
+        dbName: 'cse341',
+    });
+    console.log('Connected to MongoDB');
+    return mongoose.connection;
 }
 
-module.exports = { connectToDatabase, getDb };
+module.exports = { connectToDatabase };

@@ -48,3 +48,38 @@ Content-Type: application/json
 
 ### Delete a contact - replace the id with a real one from your database
 DELETE http://localhost:8080/contacts/6a962ede923a40f5a620493b
+
+###
+
+### POST - missing required field (should return 400)
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Missing",
+  "lastName": "Fields"
+}
+
+###
+
+### POST - invalid email format (should return 400)
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Bad",
+  "lastName": "Email",
+  "email": "not-an-email",
+  "favoriteColor": "Green",
+  "birthday": "1995-05-05"
+}
+
+###
+
+### GET by id - malformed id (should return 400, not crash)
+GET http://localhost:8080/contacts/not-a-real-id
+
+###
+
+### GET by id - valid format but nonexistent id (should return 404)
+GET http://localhost:8080/contacts/6aa576440000000000000000
